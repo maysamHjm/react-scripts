@@ -95,6 +95,8 @@ const hasJsxRuntime = (() => {
   }
 })();
 const postcssRTLCSS = require('postcss-rtlcss');
+const { Source } = require('postcss-rtlcss/options');
+
 // This is the production and development configuration.
 // It is focused on developer experience, fast rebuilds, and a minimal bundle.
 module.exports = function (webpackEnv) {
@@ -143,7 +145,7 @@ module.exports = function (webpackEnv) {
             config: false,
             plugins: !useTailwind
               ? [
-                  postcssRTLCSS({}),
+                postcssRTLCSS({source: Source.rtl}),
                   'postcss-flexbugs-fixes',
                   [
                     'postcss-preset-env',
