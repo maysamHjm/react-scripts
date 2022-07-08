@@ -145,7 +145,7 @@ module.exports = function (webpackEnv) {
             config: false,
             plugins: !useTailwind
               ? [
-                postcssRTLCSS({source: Source.rtl}),
+                  postcssRTLCSS({source: Source.rtl}),
                   'postcss-flexbugs-fixes',
                   [
                     'postcss-preset-env',
@@ -162,6 +162,7 @@ module.exports = function (webpackEnv) {
                   'postcss-normalize',
                 ]
               : [
+                  postcssRTLCSS({source: Source.rtl}),
                   'tailwindcss',
                   'postcss-flexbugs-fixes',
                   [
