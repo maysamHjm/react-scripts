@@ -87,6 +87,9 @@ const hasJsxRuntime = (() => {
   }
 })();
 
+const postcssRTLCSS = require('postcss-rtlcss');
+const { Source } = require('postcss-rtlcss/options');
+
 // This is the production and development configuration.
 // It is focused on developer experience, fast rebuilds, and a minimal bundle.
 module.exports = function (webpackEnv) {
@@ -132,6 +135,7 @@ module.exports = function (webpackEnv) {
           // https://github.com/facebook/create-react-app/issues/2677
           ident: 'postcss',
           plugins: () => [
+            postcssRTLCSS({source: Source.rtl}),
             require('postcss-flexbugs-fixes'),
             require('postcss-preset-env')({
               autoprefixer: {
